@@ -146,6 +146,8 @@
   .v-row .lab{color:var(--ink-dim)}
   .v-row .val{font-family:'Oswald',sans-serif;font-weight:500;letter-spacing:.02em;font-size:16px}
   .v-row .val.neg{color:var(--red)}
+  .tagq{display:inline-block;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:9.5px;color:var(--ink-dim);background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:3px;padding:2px 6px;margin-left:7px;vertical-align:middle}
+  .adj{font-family:'Archivo',sans-serif;font-size:11px;color:var(--amber);text-transform:none;letter-spacing:0;margin-left:8px;border-bottom:1px dotted var(--amber);cursor:pointer;font-weight:500}
   .v-gross{display:flex;justify-content:space-between;align-items:center;margin:6px 16px 0;padding:14px 16px;background:rgba(62,207,126,.08);border:1px solid rgba(62,207,126,.25);border-radius:6px}
   .v-gross .lab{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:13px;color:var(--ink-dim)}
   .v-gross .amt{font-family:'Oswald',sans-serif;font-weight:700;font-size:26px;color:var(--green)}
@@ -202,19 +204,10 @@
   .form-card{background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:30px;box-shadow:0 30px 70px -34px rgba(0,0,0,.8)}
   .form-card h3{font-size:23px;font-weight:600;margin-bottom:6px}
   .form-card .fsub{font-size:14px;color:var(--ink-dim);margin-bottom:24px;line-height:1.55}
-  .field{margin-bottom:16px}
-  .field label{display:block;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--ink-dim);margin-bottom:7px;font-weight:500}
-  .field input,.field select{width:100%;background:var(--asphalt);border:1px solid var(--line);border-radius:5px;padding:13px 14px;color:var(--ink);font-family:'Archivo',sans-serif;font-size:15px;transition:.16s}
-  .field input::placeholder{color:#5d6360}
-  .field input:focus,.field select:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,166,35,.13)}
-  .form-card .btn{width:100%;justify-content:center;margin-top:6px;font-size:17px}
   .form-foot{font-size:12px;color:var(--ink-dim);text-align:center;margin-top:14px;display:flex;align-items:center;justify-content:center;gap:7px}
   .form-foot .check{color:var(--green);font-weight:700}
-  .form-success{display:none;text-align:center;padding:20px 0}
-  .form-success.show{display:block;animation:fadein .4s ease}
-  @keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  .form-success .big{font-family:'Oswald',sans-serif;text-transform:uppercase;font-weight:700;font-size:26px;color:var(--green);margin-bottom:8px}
-  .form-success p{color:var(--ink-dim);font-size:14.5px;line-height:1.6}
+  .gform-wrap{background:#fff;border-radius:8px;overflow:hidden;border:1px solid var(--line);margin-top:4px}
+  .gform-wrap iframe{display:block;width:100%}
 
   /* FOOTER */
   footer{border-top:1px solid var(--line);padding:34px 0;background:var(--asphalt)}
@@ -336,7 +329,7 @@
         <div class="num">2</div>
         <div class="body">
           <h3><span class="sd"></span>See the real numbers</h3>
-          <p>Estimated retail for <em>your</em> market, what you should pay, with recon and transport already baked in.</p>
+          <p>Estimated retail for <em>your</em> market, with transport figured from distance and recon set to <em>your</em> shop's default — both adjustable per car.</p>
         </div>
       </div>
       <div class="step">
@@ -373,31 +366,16 @@
     </div>
 
     <div class="form-card">
-      <div id="formView">
-        <h3>Claim a founding spot</h3>
-        <p class="fsub">Spots are limited so we can actually talk to every founding dealer. No card — just your email and your lot size.</p>
-        <div class="field">
-          <label for="email">Work email</label>
-          <input type="email" id="email" placeholder="you@yourlot.com" autocomplete="email">
-        </div>
-        <div class="field">
-          <label for="lot">How many cars do you carry?</label>
-          <select id="lot">
-            <option value="" disabled selected>Select your lot size</option>
-            <option>Under 10</option>
-            <option>10–25</option>
-            <option>25–50</option>
-            <option>50–100</option>
-            <option>100+</option>
-          </select>
-        </div>
-        <button class="btn btn-primary" id="submitBtn">Claim my spot <span class="btn-arrow">→</span></button>
-        <p class="form-foot"><span class="check">✓</span> No card required. We'll never share your email.</p>
+      <h3>Claim a founding spot</h3>
+      <p class="fsub">Spots are limited so we can actually talk to every founding dealer. No card — just your email and your lot size.</p>
+      <div class="gform-wrap">
+        <iframe
+          title="SpotDealers founding access signup"
+          src="https://docs.google.com/forms/d/e/1FAIpQLSda-6Yc8cyiHNr4Ptvhgb9a9H4Mhr7dojq2kAW-T1pO6j954g/viewform?embedded=true"
+          width="100%" height="760" frameborder="0" marginheight="0" marginwidth="0"
+          loading="lazy">Loading…</iframe>
       </div>
-      <div class="form-success" id="successView">
-        <div class="big">You're on the list.</div>
-        <p>You'll hear from us directly — and if you're a small lot, expect a quick note asking how you source today. That conversation shapes what we build first. Thanks for backing this early.</p>
-      </div>
+      <p class="form-foot"><span class="check">✓</span> No card required. We'll never share your email.</p>
     </div>
   </div>
 </section>
@@ -409,27 +387,5 @@
   </div>
 </footer>
 
-<script>
-  (function(){
-    var btn=document.getElementById('submitBtn');
-    var email=document.getElementById('email');
-    var lot=document.getElementById('lot');
-    btn.addEventListener('click',function(){
-      var ok=true;
-      if(!email.value || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)){
-        email.style.borderColor='var(--red)';ok=false;
-      } else { email.style.borderColor='var(--line)'; }
-      if(!lot.value){ lot.style.borderColor='var(--red)';ok=false; }
-      else { lot.style.borderColor='var(--line)'; }
-      if(!ok) return;
-      // NOTE: wire this to your email tool (see notes below the file).
-      document.getElementById('formView').style.display='none';
-      document.getElementById('successView').classList.add('show');
-    });
-    [email,lot].forEach(function(el){
-      el.addEventListener('input',function(){el.style.borderColor='var(--line)';});
-    });
-  })();
-</script>
 </body>
 </html>
