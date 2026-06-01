@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://spotdealers.com/sitemap.xml
